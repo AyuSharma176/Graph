@@ -1,5 +1,7 @@
 package Implementation;
 
+import java.util.HashSet;
+
 public class Graph_client {
     public static void main(String[] args) {
         Graph g = new Graph(7);
@@ -12,6 +14,7 @@ public class Graph_client {
         g.addEdge(5, 6, 4);
         g.addEdge(7, 5, 2);
         g.addEdge(6, 7, 3);
+        System.out.println(g.hasPath(1, 6,new HashSet<>()));
         g.display();
     }
 }

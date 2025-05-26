@@ -13,6 +13,7 @@ public class Graph {
     }
     public void addEdge(int v1, int v2, int cost) {
         map.get(v1).put(v2, cost);
+
         map.get(v2).put(v1, cost);
     }
     public boolean containsEdge(int v1, int v2) {
@@ -37,6 +38,22 @@ public class Graph {
             map.get(nbrs).remove(v1);
         }
         map.remove(v1);
+    }
+    public boolean hasPath(int src, int des,HashSet<Integer> visited){
+        if(src==des){
+            return true;
+        }
+        visited.add(src);
+        for(int nbrs: map.get(src).keySet()) {
+            if (!visited.contains(nbrs)) {
+                boolean ans = hasPath(nbrs, des, visited);
+                if (ans) {
+                    return ans;
+                }
+            }
+        }
+        visited.remove(src);
+        return false;
     }
     public void display() {
         for(int v : map.keySet()){
