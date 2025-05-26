@@ -13,6 +13,5 @@ public class Graph_client {
         g.addEdge(7, 5, 2);
         g.addEdge(6, 7, 3);
         g.display();
-
     }
 }
