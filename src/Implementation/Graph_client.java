@@ -19,5 +19,7 @@ public class Graph_client {
         g.printallPaths(1,6,new HashSet<>(),"");
         System.out.println(g.BFS(1,6));
         System.out.println(g.DFS(1,6));
+        g.BFT();
+        g.DFT();
     }
 }

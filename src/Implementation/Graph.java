@@ -123,4 +123,60 @@ public class Graph {
         }
         return false;
     }
+    public void BFT(){
+        HashSet<Integer> visited = new HashSet<>();
+        Queue<Integer> q = new LinkedList<>();
+        for(int v : map.keySet()) {
+            if(visited.contains(v)){
+                continue;
+            }
+            q.add(v);
+            while (!q.isEmpty()) {
+                //1 remove
+                int rv = q.poll();
+                //2 ignore
+                if (visited.contains(rv)) {
+                    continue;
+                }
+                //3 marked visited
+                visited.add(rv);
+                //4 self work
+                System.out.print(rv + " ");
+                for (int nbrs : map.get(rv).keySet()) {
+                    if (!visited.contains(nbrs)) {
+                        q.add(nbrs);
+                    }
+                }
+            }
+        }
+        System.out.println();
+    }
+    public void DFT(){
+        HashSet<Integer> visited = new HashSet<>();
+        Stack<Integer> st = new Stack<>();
+        for(int v : map.keySet()) {
+            if(visited.contains(v)){
+                continue;
+            }
+            st.push(v);
+            while (!st.isEmpty()) {
+                //1 remove
+                int rv = st.pop();
+                //2 ignore
+                if (visited.contains(rv)) {
+                    continue;
+                }
+                //3 marked visited
+                visited.add(rv);
+                //4 self work
+                System.out.print(rv + " ");
+                for (int nbrs : map.get(rv).keySet()) {
+                    if (!visited.contains(nbrs)) {
+                        st.push(nbrs);
+                    }
+                }
+            }
+        }
+        System.out.println();
+    }
 }
