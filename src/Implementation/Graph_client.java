@@ -16,5 +16,8 @@ public class Graph_client {
         g.addEdge(6, 7, 3);
         System.out.println(g.hasPath(1, 6,new HashSet<>()));
         g.display();
+        g.printallPaths(1,6,new HashSet<>(),"");
+        System.out.println(g.BFS(1,6));
+        System.out.println(g.DFS(1,6));
     }
 }

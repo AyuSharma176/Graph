@@ -60,4 +60,67 @@ public class Graph {
             System.out.println(v+" ---> "+map.get(v));
         }
     }
+    public void printallPaths(int src, int des,HashSet<Integer> visited,String ans) {
+        if(src==des){
+            System.out.println(ans+src);
+            return;
+        }
+        visited.add(src);
+        for(int nbrs: map.get(src).keySet()) {
+            if (!visited.contains(nbrs)) {
+                printallPaths(nbrs, des, visited, ans+src);
+            }
+        }
+        visited.remove(src);
+    }
+    public boolean BFS(int src , int des){
+        HashSet<Integer> visited = new HashSet<>();
+        Queue<Integer> q = new LinkedList<>();
+        q.add(src);
+        while(!q.isEmpty()){
+            //1 remove
+            int rv= q.poll();
+            //2 ignore
+            if(visited.contains(rv)){
+                continue;
+            }
+            //3 marked visited
+            visited.add(rv);
+            //4 self work
+            if(rv==des){
+                return true;
+            }
+            for(int nbrs: map.get(rv).keySet()) {
+                if (!visited.contains(nbrs)) {
+                    q.add(nbrs);
+                }
+            }
+        }
+        return false;
+    }
+    public boolean DFS(int src , int des){
+        HashSet<Integer> visited = new HashSet<>();
+        Stack<Integer> st = new Stack<>();
+        st.push(src);
+        while(!st.isEmpty()){
+            //1 remove
+            int rv= st.pop();
+            //2 ignore
+            if(visited.contains(rv)){
+                continue;
+            }
+            //3 marked visited
+            visited.add(rv);
+            //4 self work
+            if(rv==des){
+                return true;
+            }
+            for(int nbrs: map.get(rv).keySet()) {
+                if (!visited.contains(nbrs)) {
+                    st.push(nbrs);
+                }
+            }
+        }
+        return false;
+    }
 }
