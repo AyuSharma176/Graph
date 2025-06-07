@@ -13,7 +13,6 @@ public class Kruskals_algo {
     }
     public void addEdge(int v1, int v2, int cost) {
         map.get(v1).put(v2, cost);
-
         map.get(v2).put(v1, cost);
     }
     public void Krushkals(){
