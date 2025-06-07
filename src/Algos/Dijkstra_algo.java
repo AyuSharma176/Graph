@@ -1,5 +1,4 @@
-package Ques;
-import org.w3c.dom.Node;
+package Algos;
 
 import java.util.*;
 public class Dijkstra_algo {
